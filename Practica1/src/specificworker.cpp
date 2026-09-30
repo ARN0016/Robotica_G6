@@ -70,6 +70,14 @@ void SpecificWorker::initialize()
 	GenericWorker::initialize();
 
 
+	this->dimensions = QRectF(-6000, -3000, 12000, 6000);
+	viewer = new AbstractGraphicViewer(this->frame, this->dimensions);
+	this->resize(900,450);
+	viewer->show();
+	const auto rob = viewer->add_robot(ROBOT_LENGTH, ROBOT_LENGTH, 0, 190, QColor("Blue"));
+	robot_polygon = std::get<0>(rob);
+
+	connect(viewer, &AbstractGraphicViewer::new_mouse_coordinates, this, &SpecificWorker::new_target_slot);
 
     //initializeCODE
     /////////GET PARAMS, OPEND DEVICES....////////
@@ -83,20 +91,49 @@ void SpecificWorker::compute()
     fps.print("Compute worker", 3000);
 
 	//computeCODE
-	//try
-	//{
-	//  camera_proxy->getYImage(0,img, cState, bState);
-    //    if (img.empty())
-    //        emit goToEmergency()
-	//  memcpy(image_gray.data, &img[0], m_width*m_height*sizeof(uchar));
-	//  searchTags(image_gray);
-	//}
-	//catch(const Ice::Exception &e)
-	//{
-	//  std::cout << "Error reading from Camera" << e << std::endl;
-	//}
+	try
+	{
+		auto data = lidar3d_proxy->getLidarData ("lidar", 0.f, 2*M_PI, 1);
+		qInfo() << data.points.size();
+		draw_lidar(data.points, &viewer->scene);
+
+	}
+	catch(const Ice::Exception &e)
+	{
+	  std::cout << "Error reading from Camera" << e << std::endl;
+	}
 }
 
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+void SpecificWorker::draw_lidar(const auto &points, QGraphicsScene* scene)
+{
+   static std::vector<QGraphicsItem*> draw_points;
+   for (const auto &p : draw_points)
+   {
+      scene->removeItem(p);
+      delete p;
+   }
+   draw_points.clear();
+
+   const QColor color("LightGreen");
+   const QPen pen(color, 10);
+   //const QBrush brush(color, Qt::SolidPattern);
+   for (const auto &p : points)
+   {
+      const auto dp = scene->addRect(-25, -25, 50, 50, pen);
+      dp->setPos(p.x, p.y);
+      draw_points.push_back(dp);   // add to the list of points to be deleted next time
+   }
+}
+
+
+
+void SpecificWorker::new_target_slot(QPointF p){
+	qInfo() << p;
+}
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 void SpecificWorker::emergency()
 {
