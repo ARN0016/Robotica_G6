@@ -30,6 +30,10 @@
 
 #include <genericworker.h>
 #include <abstract_graphic_viewer/abstract_graphic_viewer.h>
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <tuple>
 
 /**
  * \brief Class SpecificWorker implements the core functionality of the component.
@@ -87,13 +91,27 @@ private:
 	AbstractGraphicViewer *viewer;
 	const int ROBOT_LENGTH = 400;
 	QGraphicsItem *robot_polygon;
+
+	enum class STATE {
+		IDLE,
+		FORWARD,
+		TURN,
+		FOLLOW_WALL,
+		SPIRAL
+	};
+	STATE state = STATE::FORWARD;
+
 	/**
      * \brief Flag indicating whether startup checks are enabled.
      */
 	bool startup_check_flag;
 
 	void draw_lidar(const auto &points, QGraphicsScene* scene);
+	auto cono(const RoboCompLidar3D::TPoints &points, float minAngle, float maxAngle, float distance);
+	std::tuple<STATE, float, float> navigation(const RoboCompLidar3D::TPoints &points);
+	void move_robot(float adv, float rot);
 
+	
 signals:
 	//void customSignal();
 };

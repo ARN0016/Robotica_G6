@@ -3152,6 +3152,6 @@
 /home/usuario/robocomp/classes/rapplication/rapplication.cpp
 /home/usuario/Robotica_G6/Practica1/generated/genericworker.cpp
 /home/usuario/robocomp/classes/abstract_graphic_viewer/abstract_graphic_viewer.cpp
-/home/usuario/Robotica_G6/Practica1/generated/main.cpp
-/home/usuario/robocomp/classes/rapplication/rapplication.h
 /home/usuario/robocomp/classes/ConfigLoader/ConfigLoader.h
+/home/usuario/robocomp/classes/rapplication/rapplication.h
+/home/usuario/Robotica_G6/Practica1/generated/main.cpp

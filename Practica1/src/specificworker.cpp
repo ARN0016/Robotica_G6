@@ -18,6 +18,8 @@
  */
 #include "specificworker.h"
 
+const float SAFETY_THRESHOLD = 500.0f;
+
 SpecificWorker::SpecificWorker(const ConfigLoader& configLoader, TuplePrx tprx, bool startup_check) : GenericWorker(configLoader, tprx)
 {
 	this->startup_check_flag = startup_check;
@@ -89,12 +91,13 @@ void SpecificWorker::initialize()
 void SpecificWorker::compute()
 {
     fps.print("Compute worker", 3000);
+	RoboCompLidar3D::TData data;
+
 
 	//computeCODE
-	try
+	tryppoints.front().r
 	{
-		auto data = lidar3d_proxy->getLidarData ("lidar", 0.f, 2*M_PI, 1);
-		qInfo() << data.points.size();
+		data = lidar3d_proxy->getLidarData ("lidar", 0.f, 2*M_PI, 3);
 		draw_lidar(data.points, &viewer->scene);
 
 	}
@@ -102,9 +105,102 @@ void SpecificWorker::compute()
 	{
 	  std::cout << "Error reading from Camera" << e << std::endl;
 	}
+
+	
+	//choca choca
+	const auto &[STATE, adv, rot] = navigation(data.points);
+	
+	std::cout << "navigation: " << adv <<" " << rot<< std::endl;
+	move_robot(adv, rot);
 }
 
+auto SpecificWorker::cono(const RoboCompLidar3D::TPoints &points, float minAngle, float maxAngle, float distance)
+{
+	return points | std::views::filter([=, this] (const auto &point)
+	{
+		bool inAngle= (point.phi > minAngle) and (point.phi < maxAngle);
+		if( not inAngle ) return false;
+		if(distance > 0)
+			return (point.distance2d < distance) and (point.distance2d > this->ROBOT_LENGTH / 2.1);
+		return true;
+	});
+}
+
+void SpecificWorker::move_robot(float adv, float rot)
+{
+	
+	try{ omnirobot_proxy->setSpeedBase(0.0f, adv, rot);} 
+	catch(const Ice::Exception& e){std::cerr << e.what() << '\n';	};		
+}
+
+std::tuple<SpecificWorker::STATE, float, float> SpecificWorker::navigation(const RoboCompLidar3D::TPoints &points){
+	try
+	{
+
+		std::tuple<STATE, float, float> result(state, 1000.0f, 0.0f);	//State -> enum class
+
+
+
+		switch(state)
+		{
+			case STATE::IDLE:{
+				state = STATE::FORWARD;
+				break;
+			}
+
+			case STATE::FORWARD:
+			{
+				auto con = cono(points, -0.3f, 0.3f, 0.0f);
+				if(auto min = std::ranges::min_element(con, [](auto &a, auto &b){ return a.distance2d < b.distance2d;}); min != con.end())
+				// std::cout<< min->distance2d<<std::endl;
+					if(min->distance2d < SAFETY_THRESHOLD)  // COLLISION
+					{
+						move_robot(0.f, 0.f);
+						state = STATE::TURN;
+						//return;
+					}
+				//move_robot(700.f, 0.f);
+				break;
+			}			
+				
+			case STATE::TURN:
+			{
+				auto con = cono(points, -0.3f, 0.3f, 0.0f);
+				if(auto min = std::ranges::min_element(con, [](auto &a, auto &b){ return a.distance2d < b.distance2d;}); min != con.end())
+					if (min->distance2d < SAFETY_THRESHOLD)  // COLLISION
+					{
+						std::cout << "gira" << std::endl;
+						move_robot(0.f, 500.f);
+						//return;
+					}
+					else
+					{
+						state = STATE::FORWARD;
+					}
+					
+				break;
+			}
+				
+			case STATE::FOLLOW_WALL:{
+				break;
+			}
+
+			case STATE::SPIRAL:{
+				break;
+			}
+		}
+		state = std::get<0>(result);
+		return result;
+	}
+	catch(const Ice::Exception& e){
+		std::cerr << e.what() << '\n';
+	};
+}
+
+
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
 
 void SpecificWorker::draw_lidar(const auto &points, QGraphicsScene* scene)
 {
@@ -114,12 +210,16 @@ void SpecificWorker::draw_lidar(const auto &points, QGraphicsScene* scene)
       scene->removeItem(p);
       delete p;
    }
+
    draw_points.clear();
+
+   auto ppoints = cono(points, -0.01, 0.01, 0);
+   qInfo() << "DIST" <<  ppoints.front().distance2d << ppoints.front().r;
 
    const QColor color("LightGreen");
    const QPen pen(color, 10);
    //const QBrush brush(color, Qt::SolidPattern);
-   for (const auto &p : points)
+   for (const auto &p : ppoints)
    {
       const auto dp = scene->addRect(-25, -25, 50, 50, pen);
       dp->setPos(p.x, p.y);
