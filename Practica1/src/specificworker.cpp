@@ -18,7 +18,7 @@
  */
 #include "specificworker.h"
 
-const float SAFETY_THRESHOLD = 700.0f;
+const float SAFETY_THRESHOLD = 675.0f;
 
 SpecificWorker::SpecificWorker(const ConfigLoader& configLoader, TuplePrx tprx, bool startup_check) : GenericWorker(configLoader, tprx)
 {
@@ -162,6 +162,15 @@ std::tuple<SpecificWorker::STATE, float, float> SpecificWorker::navigation(const
 						std::get<1>(result) = 0.0f; 
 						//return;
 					}
+					else if (min->distance2d < SAFETY_THRESHOLD * 1.66)
+					{
+						std::get<1>(result) = 500.0f; //Velocidad x
+						std::get<2>(result) = 1.0f; //Rotacion del robot
+					}
+					else
+						state = STATE::SPIRAL;
+					
+					
 				//move_robot(700.f, 0.f);
 				//result = (1000.f, 0.f);
 				break;
@@ -174,9 +183,8 @@ std::tuple<SpecificWorker::STATE, float, float> SpecificWorker::navigation(const
 				if(auto min = std::ranges::min_element(con, [](auto &a, auto &b){ return a.distance2d < b.distance2d;}); min != con.end())
 					if (min->distance2d < SAFETY_THRESHOLD)  // COLLISION
 					{
-						std::cout << "gira" << std::endl;
 						//move_robot(0.f, 500.f);
-						std::get<2>(result) = 4.0f; 
+						std::get<2>(result) = 3.0f; 
 						//return;
 					}
 					else
@@ -191,7 +199,18 @@ std::tuple<SpecificWorker::STATE, float, float> SpecificWorker::navigation(const
 				break;
 			}
 
-			case STATE::SPIRAL:{
+			case STATE::SPIRAL:{ 
+				
+				auto con = cono(points, -0.3f, 0.3f, 0.0f);
+				if(auto min = std::ranges::min_element(con, [](auto &a, auto &b){ return a.distance2d < b.distance2d;}); min != con.end())
+					if (min->distance2d < SAFETY_THRESHOLD * 2)  // COLLISION
+					{
+						std::cout << "spiral" << std::endl;
+						//move_robot(0.f, 500.f);
+						std::get<1>(result) = 500.0f; 
+						state = STATE::FORWARD;
+						//return;
+					}
 				break;
 			}
 		}
