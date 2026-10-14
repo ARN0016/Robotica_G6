@@ -18,7 +18,7 @@
  */
 #include "specificworker.h"
 
-const float SAFETY_THRESHOLD = 500.0f;
+const float SAFETY_THRESHOLD = 700.0f;
 
 SpecificWorker::SpecificWorker(const ConfigLoader& configLoader, TuplePrx tprx, bool startup_check) : GenericWorker(configLoader, tprx)
 {
@@ -95,7 +95,8 @@ void SpecificWorker::compute()
 
 
 	//computeCODE
-	tryppoints.front().r
+	try
+	// ppoints.front().r
 	{
 		data = lidar3d_proxy->getLidarData ("lidar", 0.f, 2*M_PI, 3);
 		draw_lidar(data.points, &viewer->scene);
@@ -155,22 +156,27 @@ std::tuple<SpecificWorker::STATE, float, float> SpecificWorker::navigation(const
 				// std::cout<< min->distance2d<<std::endl;
 					if(min->distance2d < SAFETY_THRESHOLD)  // COLLISION
 					{
-						move_robot(0.f, 0.f);
+						//move_robot(0.f, 0.f);
+						//result = (STATE::TURN, 0.0f, 0.0f);
 						state = STATE::TURN;
+						std::get<1>(result) = 0.0f; 
 						//return;
 					}
 				//move_robot(700.f, 0.f);
+				//result = (1000.f, 0.f);
 				break;
 			}			
 				
 			case STATE::TURN:
 			{
+				std::get<1>(result) = 0.0f; 
 				auto con = cono(points, -0.3f, 0.3f, 0.0f);
 				if(auto min = std::ranges::min_element(con, [](auto &a, auto &b){ return a.distance2d < b.distance2d;}); min != con.end())
 					if (min->distance2d < SAFETY_THRESHOLD)  // COLLISION
 					{
 						std::cout << "gira" << std::endl;
-						move_robot(0.f, 500.f);
+						//move_robot(0.f, 500.f);
+						std::get<2>(result) = 4.0f; 
 						//return;
 					}
 					else
@@ -189,7 +195,9 @@ std::tuple<SpecificWorker::STATE, float, float> SpecificWorker::navigation(const
 				break;
 			}
 		}
-		state = std::get<0>(result);
+		//state = std::get<0>(result);
+		std::get<0>(result) = state;
+
 		return result;
 	}
 	catch(const Ice::Exception& e){
@@ -213,7 +221,7 @@ void SpecificWorker::draw_lidar(const auto &points, QGraphicsScene* scene)
 
    draw_points.clear();
 
-   auto ppoints = cono(points, -0.01, 0.01, 0);
+   auto ppoints = cono(points, -10.f, 10.f, 0);
    qInfo() << "DIST" <<  ppoints.front().distance2d << ppoints.front().r;
 
    const QColor color("LightGreen");

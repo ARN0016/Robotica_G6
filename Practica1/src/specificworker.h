@@ -99,7 +99,7 @@ private:
 		FOLLOW_WALL,
 		SPIRAL
 	};
-	STATE state = STATE::FORWARD;
+	STATE state = STATE::IDLE;
 
 	/**
      * \brief Flag indicating whether startup checks are enabled.
