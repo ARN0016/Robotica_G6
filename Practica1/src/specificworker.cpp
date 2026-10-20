@@ -18,7 +18,7 @@
  */
 #include "specificworker.h"
 
-const float SAFETY_THRESHOLD = 675.0f;
+const float SAFETY_THRESHOLD = 635.0f;
 
 SpecificWorker::SpecificWorker(const ConfigLoader& configLoader, TuplePrx tprx, bool startup_check) : GenericWorker(configLoader, tprx)
 {
@@ -184,7 +184,7 @@ std::tuple<SpecificWorker::STATE, float, float> SpecificWorker::navigation(const
 					if (min->distance2d < SAFETY_THRESHOLD)  // COLLISION
 					{
 						//move_robot(0.f, 500.f);
-						std::get<2>(result) = 3.0f; 
+						std::get<2>(result) = 2.7f; 
 						//return;
 					}
 					else
@@ -196,6 +196,7 @@ std::tuple<SpecificWorker::STATE, float, float> SpecificWorker::navigation(const
 			}
 				
 			case STATE::FOLLOW_WALL:{
+
 				break;
 			}
 
