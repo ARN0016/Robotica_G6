@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "/home/usuario/Robotica_G6/Practica1/generated/VisualElements.ice"
+  "/home/usuario/Robotica_G6/Practica2/generated/VisualElements.ice"
   "CMakeFiles/ICE_VisualElements_target"
 )
 

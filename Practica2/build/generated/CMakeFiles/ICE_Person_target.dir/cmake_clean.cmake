@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "/home/usuario/Robotica_G6/Practica1/generated/Person.ice"
+  "/home/usuario/Robotica_G6/Practica2/generated/Person.ice"
   "CMakeFiles/ICE_Person_target"
 )
 

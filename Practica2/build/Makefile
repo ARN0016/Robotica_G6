@@ -57,10 +57,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/usuario/Robotica_G6/Practica1
+CMAKE_SOURCE_DIR = /home/usuario/Robotica_G6/Practica2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/usuario/Robotica_G6/Practica1/build
+CMAKE_BINARY_DIR = /home/usuario/Robotica_G6/Practica2/build
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -132,9 +132,9 @@ install/strip/fast: preinstall/fast
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/usuario/Robotica_G6/Practica1/build/CMakeFiles /home/usuario/Robotica_G6/Practica1/build//CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/usuario/Robotica_G6/Practica2/build/CMakeFiles /home/usuario/Robotica_G6/Practica2/build//CMakeFiles/progress.marks
 	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/usuario/Robotica_G6/Practica1/build/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/usuario/Robotica_G6/Practica2/build/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -162,82 +162,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named ICES__home_usuario_Robotica_G6_Practica1_generated
+# Target rules for targets named ICES__home_usuario_Robotica_G6_Practica2_generated
 
 # Build rule for target.
-ICES__home_usuario_Robotica_G6_Practica1_generated: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ICES__home_usuario_Robotica_G6_Practica1_generated
-.PHONY : ICES__home_usuario_Robotica_G6_Practica1_generated
+ICES__home_usuario_Robotica_G6_Practica2_generated: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ICES__home_usuario_Robotica_G6_Practica2_generated
+.PHONY : ICES__home_usuario_Robotica_G6_Practica2_generated
 
 # fast build rule for target.
-ICES__home_usuario_Robotica_G6_Practica1_generated/fast:
-	$(MAKE) $(MAKESILENT) -f generated/CMakeFiles/ICES__home_usuario_Robotica_G6_Practica1_generated.dir/build.make generated/CMakeFiles/ICES__home_usuario_Robotica_G6_Practica1_generated.dir/build
-.PHONY : ICES__home_usuario_Robotica_G6_Practica1_generated/fast
-
-#=============================================================================
-# Target rules for targets named ICE_Camera360RGB_target
-
-# Build rule for target.
-ICE_Camera360RGB_target: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ICE_Camera360RGB_target
-.PHONY : ICE_Camera360RGB_target
-
-# fast build rule for target.
-ICE_Camera360RGB_target/fast:
-	$(MAKE) $(MAKESILENT) -f generated/CMakeFiles/ICE_Camera360RGB_target.dir/build.make generated/CMakeFiles/ICE_Camera360RGB_target.dir/build
-.PHONY : ICE_Camera360RGB_target/fast
-
-#=============================================================================
-# Target rules for targets named ICE_OmniRobot_target
-
-# Build rule for target.
-ICE_OmniRobot_target: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ICE_OmniRobot_target
-.PHONY : ICE_OmniRobot_target
-
-# fast build rule for target.
-ICE_OmniRobot_target/fast:
-	$(MAKE) $(MAKESILENT) -f generated/CMakeFiles/ICE_OmniRobot_target.dir/build.make generated/CMakeFiles/ICE_OmniRobot_target.dir/build
-.PHONY : ICE_OmniRobot_target/fast
-
-#=============================================================================
-# Target rules for targets named ICE_Lidar3D_target
-
-# Build rule for target.
-ICE_Lidar3D_target: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ICE_Lidar3D_target
-.PHONY : ICE_Lidar3D_target
-
-# fast build rule for target.
-ICE_Lidar3D_target/fast:
-	$(MAKE) $(MAKESILENT) -f generated/CMakeFiles/ICE_Lidar3D_target.dir/build.make generated/CMakeFiles/ICE_Lidar3D_target.dir/build
-.PHONY : ICE_Lidar3D_target/fast
-
-#=============================================================================
-# Target rules for targets named ICE_Person_target
-
-# Build rule for target.
-ICE_Person_target: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ICE_Person_target
-.PHONY : ICE_Person_target
-
-# fast build rule for target.
-ICE_Person_target/fast:
-	$(MAKE) $(MAKESILENT) -f generated/CMakeFiles/ICE_Person_target.dir/build.make generated/CMakeFiles/ICE_Person_target.dir/build
-.PHONY : ICE_Person_target/fast
-
-#=============================================================================
-# Target rules for targets named ICE_VisualElements_target
-
-# Build rule for target.
-ICE_VisualElements_target: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ICE_VisualElements_target
-.PHONY : ICE_VisualElements_target
-
-# fast build rule for target.
-ICE_VisualElements_target/fast:
-	$(MAKE) $(MAKESILENT) -f generated/CMakeFiles/ICE_VisualElements_target.dir/build.make generated/CMakeFiles/ICE_VisualElements_target.dir/build
-.PHONY : ICE_VisualElements_target/fast
+ICES__home_usuario_Robotica_G6_Practica2_generated/fast:
+	$(MAKE) $(MAKESILENT) -f generated/CMakeFiles/ICES__home_usuario_Robotica_G6_Practica2_generated.dir/build.make generated/CMakeFiles/ICES__home_usuario_Robotica_G6_Practica2_generated.dir/build
+.PHONY : ICES__home_usuario_Robotica_G6_Practica2_generated/fast
 
 #=============================================================================
 # Target rules for targets named ICE_GenericBase_target
@@ -253,43 +188,108 @@ ICE_GenericBase_target/fast:
 .PHONY : ICE_GenericBase_target/fast
 
 #=============================================================================
-# Target rules for targets named chocachoca
+# Target rules for targets named ICE_OmniRobot_target
 
 # Build rule for target.
-chocachoca: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 chocachoca
-.PHONY : chocachoca
+ICE_OmniRobot_target: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ICE_OmniRobot_target
+.PHONY : ICE_OmniRobot_target
 
 # fast build rule for target.
-chocachoca/fast:
-	$(MAKE) $(MAKESILENT) -f generated/CMakeFiles/chocachoca.dir/build.make generated/CMakeFiles/chocachoca.dir/build
-.PHONY : chocachoca/fast
+ICE_OmniRobot_target/fast:
+	$(MAKE) $(MAKESILENT) -f generated/CMakeFiles/ICE_OmniRobot_target.dir/build.make generated/CMakeFiles/ICE_OmniRobot_target.dir/build
+.PHONY : ICE_OmniRobot_target/fast
 
 #=============================================================================
-# Target rules for targets named chocachoca_autogen_timestamp_deps
+# Target rules for targets named ICE_VisualElements_target
 
 # Build rule for target.
-chocachoca_autogen_timestamp_deps: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 chocachoca_autogen_timestamp_deps
-.PHONY : chocachoca_autogen_timestamp_deps
+ICE_VisualElements_target: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ICE_VisualElements_target
+.PHONY : ICE_VisualElements_target
 
 # fast build rule for target.
-chocachoca_autogen_timestamp_deps/fast:
-	$(MAKE) $(MAKESILENT) -f generated/CMakeFiles/chocachoca_autogen_timestamp_deps.dir/build.make generated/CMakeFiles/chocachoca_autogen_timestamp_deps.dir/build
-.PHONY : chocachoca_autogen_timestamp_deps/fast
+ICE_VisualElements_target/fast:
+	$(MAKE) $(MAKESILENT) -f generated/CMakeFiles/ICE_VisualElements_target.dir/build.make generated/CMakeFiles/ICE_VisualElements_target.dir/build
+.PHONY : ICE_VisualElements_target/fast
 
 #=============================================================================
-# Target rules for targets named chocachoca_autogen
+# Target rules for targets named ICE_Camera360RGB_target
 
 # Build rule for target.
-chocachoca_autogen: cmake_check_build_system
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 chocachoca_autogen
-.PHONY : chocachoca_autogen
+ICE_Camera360RGB_target: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ICE_Camera360RGB_target
+.PHONY : ICE_Camera360RGB_target
 
 # fast build rule for target.
-chocachoca_autogen/fast:
-	$(MAKE) $(MAKESILENT) -f generated/CMakeFiles/chocachoca_autogen.dir/build.make generated/CMakeFiles/chocachoca_autogen.dir/build
-.PHONY : chocachoca_autogen/fast
+ICE_Camera360RGB_target/fast:
+	$(MAKE) $(MAKESILENT) -f generated/CMakeFiles/ICE_Camera360RGB_target.dir/build.make generated/CMakeFiles/ICE_Camera360RGB_target.dir/build
+.PHONY : ICE_Camera360RGB_target/fast
+
+#=============================================================================
+# Target rules for targets named ICE_Person_target
+
+# Build rule for target.
+ICE_Person_target: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ICE_Person_target
+.PHONY : ICE_Person_target
+
+# fast build rule for target.
+ICE_Person_target/fast:
+	$(MAKE) $(MAKESILENT) -f generated/CMakeFiles/ICE_Person_target.dir/build.make generated/CMakeFiles/ICE_Person_target.dir/build
+.PHONY : ICE_Person_target/fast
+
+#=============================================================================
+# Target rules for targets named ICE_Lidar3D_target
+
+# Build rule for target.
+ICE_Lidar3D_target: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 ICE_Lidar3D_target
+.PHONY : ICE_Lidar3D_target
+
+# fast build rule for target.
+ICE_Lidar3D_target/fast:
+	$(MAKE) $(MAKESILENT) -f generated/CMakeFiles/ICE_Lidar3D_target.dir/build.make generated/CMakeFiles/ICE_Lidar3D_target.dir/build
+.PHONY : ICE_Lidar3D_target/fast
+
+#=============================================================================
+# Target rules for targets named localiser
+
+# Build rule for target.
+localiser: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 localiser
+.PHONY : localiser
+
+# fast build rule for target.
+localiser/fast:
+	$(MAKE) $(MAKESILENT) -f generated/CMakeFiles/localiser.dir/build.make generated/CMakeFiles/localiser.dir/build
+.PHONY : localiser/fast
+
+#=============================================================================
+# Target rules for targets named localiser_autogen_timestamp_deps
+
+# Build rule for target.
+localiser_autogen_timestamp_deps: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 localiser_autogen_timestamp_deps
+.PHONY : localiser_autogen_timestamp_deps
+
+# fast build rule for target.
+localiser_autogen_timestamp_deps/fast:
+	$(MAKE) $(MAKESILENT) -f generated/CMakeFiles/localiser_autogen_timestamp_deps.dir/build.make generated/CMakeFiles/localiser_autogen_timestamp_deps.dir/build
+.PHONY : localiser_autogen_timestamp_deps/fast
+
+#=============================================================================
+# Target rules for targets named localiser_autogen
+
+# Build rule for target.
+localiser_autogen: cmake_check_build_system
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 localiser_autogen
+.PHONY : localiser_autogen
+
+# fast build rule for target.
+localiser_autogen/fast:
+	$(MAKE) $(MAKESILENT) -f generated/CMakeFiles/localiser_autogen.dir/build.make generated/CMakeFiles/localiser_autogen.dir/build
+.PHONY : localiser_autogen/fast
 
 # Help Target
 help:
@@ -303,16 +303,16 @@ help:
 	@echo "... install/strip"
 	@echo "... list_install_components"
 	@echo "... rebuild_cache"
-	@echo "... ICES__home_usuario_Robotica_G6_Practica1_generated"
+	@echo "... ICES__home_usuario_Robotica_G6_Practica2_generated"
 	@echo "... ICE_Camera360RGB_target"
 	@echo "... ICE_GenericBase_target"
 	@echo "... ICE_Lidar3D_target"
 	@echo "... ICE_OmniRobot_target"
 	@echo "... ICE_Person_target"
 	@echo "... ICE_VisualElements_target"
-	@echo "... chocachoca_autogen"
-	@echo "... chocachoca_autogen_timestamp_deps"
-	@echo "... chocachoca"
+	@echo "... localiser_autogen"
+	@echo "... localiser_autogen_timestamp_deps"
+	@echo "... localiser"
 .PHONY : help
 
 

@@ -34,6 +34,15 @@
 #include <vector>
 #include <algorithm>
 #include <tuple>
+#include <QImage>
+#include <QPainter>
+#include <QPen>
+#include <QPixmap>
+#include <Eigen/Dense>
+#include <Eigen/Core>       // Para Eigen::Vector3d
+#include <Eigen/Geometry> 
+
+
 
 /**
  * \brief Class SpecificWorker implements the core functionality of the component.
@@ -106,10 +115,23 @@ private:
      */
 	bool startup_check_flag;
 
+	//Choca choca Practica 1
 	void draw_lidar(const auto &points, QGraphicsScene* scene);
-	auto cono(const RoboCompLidar3D::TPoints &points, float minAngle, float maxAngle, float distance);
+	RoboCompLidar3D::TPoints cono(const RoboCompLidar3D::TPoints &points, float minAngle, float maxAngle, float distance);
 	std::tuple<STATE, float, float> navigation(const RoboCompLidar3D::TPoints &points);
 	void move_robot(float adv, float rot);
+	//Localiser Practica 2 
+	void draw_image(const RoboCompCamera360RGB::TImage &raw, const QRect &roi, const std::vector<QPointF> &projected_points,  QLabel *label);
+	void draw_person_in_lidar(float person_angle, float distance, QGraphicsScene* scene);
+	std::optional<std::tuple<std::vector<QPointF>, float>> project_lidar_to_camera(
+                                           const RoboCompLidar3D::TPoints& points,
+                                           const Eigen::Isometry3d& cam_transform,
+                                           double personAngle,
+                                           const RoboCompCamera360RGB::TImage &image,
+                                           const QRect &roi,
+                                           double azimuth_sign = 1.0,
+                                           double azimuth_offset = 0.0);
+	
 
 	
 signals:

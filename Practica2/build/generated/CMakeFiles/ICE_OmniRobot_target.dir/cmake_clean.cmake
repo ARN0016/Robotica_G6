@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "/home/usuario/Robotica_G6/Practica1/generated/OmniRobot.ice"
+  "/home/usuario/Robotica_G6/Practica2/generated/OmniRobot.ice"
   "CMakeFiles/ICE_OmniRobot_target"
 )
 

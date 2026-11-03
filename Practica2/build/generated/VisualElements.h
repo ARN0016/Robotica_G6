@@ -32,8 +32,8 @@
 #include <Ice/FactoryTableInit.h>
 #include <IceUtil/ScopedArray.h>
 #include <Ice/Optional.h>
-#include <Person.h>
 #include <Camera360RGB.h>
+#include <Person.h>
 #include <IceUtil/UndefSysMacros.h>
 
 #ifndef ICE_IGNORE_VERSION

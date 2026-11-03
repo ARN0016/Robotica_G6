@@ -8,7 +8,6 @@ LIST(APPEND HEADERS
   ../src/specificworker.h
 )
 
-
 LIST(APPEND LIBS ${LIBS})
 
 add_compile_options(

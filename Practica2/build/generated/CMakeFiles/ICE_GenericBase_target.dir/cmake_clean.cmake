@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "/home/usuario/Robotica_G6/Practica1/generated/GenericBase.ice"
+  "/home/usuario/Robotica_G6/Practica2/generated/GenericBase.ice"
   "CMakeFiles/ICE_GenericBase_target"
 )
 

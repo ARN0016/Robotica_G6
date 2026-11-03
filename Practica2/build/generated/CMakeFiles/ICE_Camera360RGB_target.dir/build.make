@@ -53,10 +53,10 @@ RM = /usr/bin/cmake -E rm -f
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /home/usuario/Robotica_G6/Practica1
+CMAKE_SOURCE_DIR = /home/usuario/Robotica_G6/Practica2
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /home/usuario/Robotica_G6/Practica1/build
+CMAKE_BINARY_DIR = /home/usuario/Robotica_G6/Practica2/build
 
 # Utility rule file for ICE_Camera360RGB_target.
 
@@ -66,14 +66,14 @@ include generated/CMakeFiles/ICE_Camera360RGB_target.dir/compiler_depend.make
 # Include the progress variables for this target.
 include generated/CMakeFiles/ICE_Camera360RGB_target.dir/progress.make
 
-generated/CMakeFiles/ICE_Camera360RGB_target: /home/usuario/Robotica_G6/Practica1/generated/Camera360RGB.ice
+generated/CMakeFiles/ICE_Camera360RGB_target: /home/usuario/Robotica_G6/Practica2/generated/Camera360RGB.ice
 
-/home/usuario/Robotica_G6/Practica1/generated/Camera360RGB.ice: /home/usuario/robocomp/interfaces/IDSLs/Camera360RGB.idsl
-	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/usuario/Robotica_G6/Practica1/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating /home/usuario/Robotica_G6/Practica1/generated/Camera360RGB.ice from /home/usuario/robocomp/interfaces/IDSLs/Camera360RGB.idsl"
-	cd /home/usuario/Robotica_G6/Practica1/build/generated && robocompdsl /home/usuario/robocomp/interfaces/IDSLs/Camera360RGB.idsl /home/usuario/Robotica_G6/Practica1/generated/Camera360RGB.ice
+/home/usuario/Robotica_G6/Practica2/generated/Camera360RGB.ice: /home/usuario/robocomp/interfaces/IDSLs/Camera360RGB.idsl
+	@$(CMAKE_COMMAND) -E cmake_echo_color "--switch=$(COLOR)" --blue --bold --progress-dir=/home/usuario/Robotica_G6/Practica2/build/CMakeFiles --progress-num=$(CMAKE_PROGRESS_1) "Generating /home/usuario/Robotica_G6/Practica2/generated/Camera360RGB.ice from /home/usuario/robocomp/interfaces/IDSLs/Camera360RGB.idsl"
+	cd /home/usuario/Robotica_G6/Practica2/build/generated && robocompdsl /home/usuario/robocomp/interfaces/IDSLs/Camera360RGB.idsl /home/usuario/Robotica_G6/Practica2/generated/Camera360RGB.ice
 
 ICE_Camera360RGB_target: generated/CMakeFiles/ICE_Camera360RGB_target
-ICE_Camera360RGB_target: /home/usuario/Robotica_G6/Practica1/generated/Camera360RGB.ice
+ICE_Camera360RGB_target: /home/usuario/Robotica_G6/Practica2/generated/Camera360RGB.ice
 ICE_Camera360RGB_target: generated/CMakeFiles/ICE_Camera360RGB_target.dir/build.make
 .PHONY : ICE_Camera360RGB_target
 
@@ -82,10 +82,10 @@ generated/CMakeFiles/ICE_Camera360RGB_target.dir/build: ICE_Camera360RGB_target
 .PHONY : generated/CMakeFiles/ICE_Camera360RGB_target.dir/build
 
 generated/CMakeFiles/ICE_Camera360RGB_target.dir/clean:
-	cd /home/usuario/Robotica_G6/Practica1/build/generated && $(CMAKE_COMMAND) -P CMakeFiles/ICE_Camera360RGB_target.dir/cmake_clean.cmake
+	cd /home/usuario/Robotica_G6/Practica2/build/generated && $(CMAKE_COMMAND) -P CMakeFiles/ICE_Camera360RGB_target.dir/cmake_clean.cmake
 .PHONY : generated/CMakeFiles/ICE_Camera360RGB_target.dir/clean
 
 generated/CMakeFiles/ICE_Camera360RGB_target.dir/depend:
-	cd /home/usuario/Robotica_G6/Practica1/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/usuario/Robotica_G6/Practica1 /home/usuario/Robotica_G6/Practica1/generated /home/usuario/Robotica_G6/Practica1/build /home/usuario/Robotica_G6/Practica1/build/generated /home/usuario/Robotica_G6/Practica1/build/generated/CMakeFiles/ICE_Camera360RGB_target.dir/DependInfo.cmake "--color=$(COLOR)"
+	cd /home/usuario/Robotica_G6/Practica2/build && $(CMAKE_COMMAND) -E cmake_depends "Unix Makefiles" /home/usuario/Robotica_G6/Practica2 /home/usuario/Robotica_G6/Practica2/generated /home/usuario/Robotica_G6/Practica2/build /home/usuario/Robotica_G6/Practica2/build/generated /home/usuario/Robotica_G6/Practica2/build/generated/CMakeFiles/ICE_Camera360RGB_target.dir/DependInfo.cmake "--color=$(COLOR)"
 .PHONY : generated/CMakeFiles/ICE_Camera360RGB_target.dir/depend
 

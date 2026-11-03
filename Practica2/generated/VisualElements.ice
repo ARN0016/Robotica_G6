@@ -8,8 +8,8 @@
 //******************************************************************
 #ifndef ROBOCOMPVISUALELEMENTS_ICE
 #define ROBOCOMPVISUALELEMENTS_ICE
-#include <Person.ice>
 #include <Camera360RGB.ice>
+#include <Person.ice>
 module RoboCompVisualElements
 {
 	struct TRoi

@@ -1,5 +1,5 @@
 file(REMOVE_RECURSE
-  "/home/usuario/Robotica_G6/Practica1/generated/Camera360RGB.ice"
+  "/home/usuario/Robotica_G6/Practica2/generated/Camera360RGB.ice"
   "CMakeFiles/ICE_Camera360RGB_target"
 )
 
