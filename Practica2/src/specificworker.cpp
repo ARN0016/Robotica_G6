@@ -163,7 +163,7 @@ void SpecificWorker::compute()
 	//const auto &[adv,rot] = controller.update(corrected_angle, corrected_distance);
 
 	//move robot
-	try { omnirobot_proxy->setSpeedBase (0, brake(person_angle) * (depth_from_proj -1000), -person_angle); }
+	try { omnirobot_proxy->setSpeedBase (0, brake(person_angle) * (depth_from_proj -1000), -person_angle * 1.5); }
 	catch (const Ice::Exception &e) 
 	{
 		std::cout << "Exception in setBaseSpeed: " << e.what() << std::endl;
