@@ -163,10 +163,16 @@ void SpecificWorker::compute()
 	//const auto &[adv,rot] = controller.update(corrected_angle, corrected_distance);
 
 	//move robot
-	try { omnirobot_proxy->setSpeedBase (0, 0, -person_angle); }
-	catch (const Ice::Exception &e) {std::cout << "Exception in setBaseSpeed: " << e.what() << std::endl;}
+	try { omnirobot_proxy->setSpeedBase (0, brake(person_angle) * (depth_from_proj -1000), -person_angle); }
+	catch (const Ice::Exception &e) 
+	{
+		std::cout << "Exception in setBaseSpeed: " << e.what() << std::endl;
+		return;
+	}
 
 	draw_image(image, roi, projected_points, label);
+	//draw_image(image, roi, {}, label);
+
 	//TODO Implementar este metodo
 	//draw_person_in_lidar(corrected_angle, corrected_distance, &viewer->scene);
 	draw_person_in_lidar(person_angle, depth_from_proj, &viewer->scene);
@@ -179,6 +185,13 @@ void SpecificWorker::compute()
 	
 	// std::cout << "navigation: " << adv <<" " << rot<< std::endl;
 	// move_robot(adv, rot);
+}
+
+float SpecificWorker::brake(float angle)
+{
+	const double omega = - std::pow(0.5,2) /std::log(0.5);
+	double y = std::exp(-(angle * angle) / omega);
+	return y;
 }
 
 //------------------------------------------------------------------------------------

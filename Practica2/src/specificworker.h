@@ -131,7 +131,7 @@ private:
                                            const QRect &roi,
                                            double azimuth_sign = 1.0,
                                            double azimuth_offset = 0.0);
-	
+	float brake(float angle);
 
 	
 signals:
