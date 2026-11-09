@@ -68,9 +68,9 @@ include generated/CMakeFiles/localiser_autogen_timestamp_deps.dir/progress.make
 
 generated/CMakeFiles/localiser_autogen_timestamp_deps: /usr/lib/qt6/libexec/moc
 generated/CMakeFiles/localiser_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Gui.so.6.4.2
-generated/CMakeFiles/localiser_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Xml.so.6.4.2
 generated/CMakeFiles/localiser_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6OpenGL.so.6.4.2
 generated/CMakeFiles/localiser_autogen_timestamp_deps: /usr/lib/qt6/libexec/uic
+generated/CMakeFiles/localiser_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6Xml.so.6.4.2
 generated/CMakeFiles/localiser_autogen_timestamp_deps: /usr/lib/x86_64-linux-gnu/libQt6StateMachine.so.6.4.2
 
 localiser_autogen_timestamp_deps: generated/CMakeFiles/localiser_autogen_timestamp_deps
