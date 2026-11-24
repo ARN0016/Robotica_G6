@@ -43,8 +43,8 @@ SET (SOURCES
 
 #ROBOCOMP
 ROBOCOMP_INITIALIZE( $ENV{ROBOCOMP}/ )
-ROBOCOMP_IDSL_TO_ICE(GenericBase OmniRobot VisualElements Camera360RGB Person Lidar3D)
-ROBOCOMP_ICE_TO_SRC(GenericBase OmniRobot VisualElements Camera360RGB Person Lidar3D)
+ROBOCOMP_IDSL_TO_ICE(VisualElements Lidar3D GenericBase Person OmniRobot Camera360RGB)
+ROBOCOMP_ICE_TO_SRC(VisualElements Lidar3D GenericBase Person OmniRobot Camera360RGB)
 SET (EXECUTABLE_OUTPUT_PATH ${RC_COMPONENT_DEVEL_PATH}/bin)
 set(CMAKE_AUTOUIC_SEARCH_PATHS ${CMAKE_CURRENT_SOURCE_DIR}/../src)
 

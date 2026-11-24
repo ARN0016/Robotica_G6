@@ -166,9 +166,7 @@ void SpecificWorker::compute()
 	const float adv = std::clamp(brake(person_angle) * 5.5f * (depth_from_proj - 1000.f), -1000.f, 1000.f);
 	const float rot = std::clamp((float)(-1.5f * person_angle), -0.8f, 0.8f);
 	try { 
-		//omnirobot_proxy->setSpeedBase (0, brake(person_angle) * (depth_from_proj -1000), -person_angle * 1.5); 
 		omnirobot_proxy->setSpeedBase(0, adv, rot);
-		
 	}
 	catch (const Ice::Exception &e) 
 	{
@@ -177,20 +175,12 @@ void SpecificWorker::compute()
 	}
 
 	draw_image(image, roi, projected_points, label);
-	//draw_image(image, roi, {}, label);
 
-	//TODO Implementar este metodo
-	//draw_person_in_lidar(corrected_angle, corrected_distance, &viewer->scene);
 	draw_person_in_lidar(person_angle, depth_from_proj, &viewer->scene);
 	draw_lidar(lidar_data.points, &viewer->scene);
 
 	fps.print("Compute Worker", 3000);
 	
-	 //choca choca
-	// const auto &[STATE, adv, rot] = navigation(data.points);
-	
-	// std::cout << "navigation: " << adv <<" " << rot<< std::endl;
-	// move_robot(adv, rot);
 }
 
 float SpecificWorker::brake(float angle)
@@ -200,7 +190,7 @@ float SpecificWorker::brake(float angle)
 	return y;
 }
 
-//------------------------------------------------------------------------------------
+//------------------------------------------------------------------------------------ Localiser
 
 void SpecificWorker::draw_image(const RoboCompCamera360RGB::TImage &raw, const QRect &roi, const std::vector<QPointF> &projected_points,  QLabel *label)
 {
